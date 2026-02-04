@@ -10,9 +10,9 @@ export async function handler(event, context) {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-3.5-turbo', // plus compatible
         messages: [
-          { role: 'system', content: 'Tu es un assistant commercial pour une agence web premium à Crans-Montana. Réponds uniquement en texte clair, concis et professionnel.' },
+          { role: 'system', content: 'Tu es un assistant commercial pour une agence web premium à Crans-Montana. Réponds uniquement en texte clair et professionnel.' },
           { role: 'user', content: message }
         ],
         temperature: 0.6
@@ -20,15 +20,17 @@ export async function handler(event, context) {
     });
 
     const data = await response.json();
-    console.log("Réponse OpenAI :", JSON.stringify(data, null, 2));
+    console.log("Réponse OpenAI complète :", JSON.stringify(data, null, 2));
 
-    // Assurez-vous de récupérer le bon champ selon le modèle
-    const reply = data.choices?.[0]?.message?.content || "Je n'ai pas de réponse.";
+    if (!data.choices || !data.choices[0]?.message?.content) {
+      return { statusCode: 500, body: JSON.stringify({ reply: "Erreur API OpenAI ou clé invalide" }) };
+    }
 
+    const reply = data.choices[0].message.content;
     return { statusCode: 200, body: JSON.stringify({ reply }) };
 
   } catch (err) {
-    console.error("Erreur dans la fonction chatbot :", err);
+    console.error("Erreur fonction chatbot :", err);
     return { statusCode: 500, body: JSON.stringify({ reply: "Erreur serveur. L'équipe vous répondra." }) };
   }
 }
