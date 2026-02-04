@@ -64,21 +64,12 @@ footer{text-align:center;padding:70px;color:var(--muted)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center}
 .modal-content{background:var(--card);padding:42px;border-radius:30px;width:90%;max-width:420px;position:relative}
 .close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:var(--muted)}
-section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,.61,.36,1)}
-.story-visible{opacity:1;transform:translateY(0)}
-#chat-toggle{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#6b6bff,#9f7cff);display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;cursor:pointer;box-shadow:0 15px 40px rgba(0,0,0,.4)}
-#chatbox{position:fixed;bottom:90px;right:20px;width:300px;height:380px;background:#111;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden}
-#chatbox.open{display:flex}
-#chat-messages{flex:1;padding:15px;overflow-y:auto;font-size:14px}
-.msg{margin-bottom:10px;padding:8px 12px;border-radius:14px;max-width:80%}
-.msg.user{background:#fff;color:#000;margin-left:auto}
-.msg.bot{background:#333;color:#fff}
-#chat-input{border:none;padding:12px;font-size:14px;outline:none;background:#1a1a1a;color:#fff}
 @media(max-width:700px){h1{font-size:2.3rem}}
 </style>
 </head>
 <body>
 <div class="loader" id="loader">Agence Web</div>
+
 <nav>
 <strong>Agence Web</strong>
 <div>
@@ -90,6 +81,7 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <span class="toggle">🌗</span>
 </div>
 </nav>
+
 <div class="hero">
 <div class="floating f1"></div>
 <div class="floating f2"></div>
@@ -97,14 +89,16 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <p>Design premium, performance et accompagnement humain</p>
 <button class="btn" onclick="openModal()">Réserver un appel</button>
 </div>
+
 <section class="stats">
 <div class="line left"></div><div class="line right"></div>
 <div class="grid stats">
-<div class="fade"><strong class="counter" data-target="120">0</strong><span>Projets livrés</span></div>
-<div class="fade"><strong class="counter" data-target="98">0</strong><span>% de satisfaction</span></div>
-<div class="fade"><strong class="counter" data-target="6">0</strong><span>Années d'expérience</span></div>
+<div class="fade"><strong class="counter" data-target="3">0</strong><span>Projets livrés</span></div>
+<div class="fade"><strong class="counter" data-target="100">0</strong><span>% de satisfaction</span></div>
+<div class="fade"><strong class="counter" data-target="5">0</strong><span>Années d'expérience</span></div>
 </div>
 </section>
+
 <section id="services">
 <h2>Nos expertises</h2>
 <div class="grid services">
@@ -114,6 +108,7 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <div class="card fade">Branding & image digitale</div>
 </div>
 </section>
+
 <section id="portfolio">
 <h2>Portfolio</h2>
 <div class="grid portfolio">
@@ -123,14 +118,40 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <div class="port-item fade"><img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=800&q=80"><div class="overlay">Entreprise B2B</div></div>
 </div>
 </section>
+
 <section id="pricing">
 <h2>Nos offres</h2>
 <div class="grid pricing">
-<div class="card fade"><h3>Essentielle – 800 CHF</h3><ul><li>Site vitrine professionnel</li><li>Design responsive moderne</li><li>SEO de base</li><li>Mise en ligne complète</li></ul></div>
-<div class="card fade"><h3>Avancée – 1'800 CHF</h3><ul><li>Site sur mesure</li><li>Optimisation performance</li><li>SEO local renforcé</li><li>Conseil stratégique</li></ul></div>
-<div class="card fade"><h3>Premium – 3'000 CHF+</h3><ul><li>UX haut de gamme</li><li>SEO avancé</li><li>Maintenance incluse</li><li>Suivi long terme</li></ul></div>
+<div class="card fade">
+<h3>Essentielle – 800 CHF</h3>
+<ul>
+<li>Site vitrine professionnel</li>
+<li>Design responsive moderne</li>
+<li>SEO de base</li>
+<li>Mise en ligne complète</li>
+</ul>
+</div>
+<div class="card fade">
+<h3>Avancée – 1'800 CHF</h3>
+<ul>
+<li>Site sur mesure</li>
+<li>Optimisation performance</li>
+<li>SEO local renforcé</li>
+<li>Conseil stratégique</li>
+</ul>
+</div>
+<div class="card fade">
+<h3>Premium – 3'000 CHF+</h3>
+<ul>
+<li>UX haut de gamme</li>
+<li>SEO avancé</li>
+<li>Maintenance incluse</li>
+<li>Suivi long terme</li>
+</ul>
+</div>
 </div>
 </section>
+
 <section id="testimonials">
 <h2>Ils nous font confiance</h2>
 <div class="grid testimonials">
@@ -139,6 +160,7 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <div class="card testimonial fade">Un site moderne qui convertit vraiment. – Sophie, coach</div>
 </div>
 </section>
+
 <section id="contact">
 <h2>Contact</h2>
 <form onsubmit="sendForm(event)">
@@ -148,12 +170,9 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <button class="btn">Envoyer</button>
 </form>
 </section>
+
 <footer>© 2026 Agence Web Luxe Moderne</footer>
-<div id="chat-toggle">💬</div>
-<div id="chatbox">
-<div id="chat-messages"></div>
-<input id="chat-input" placeholder="Posez votre question..." />
-</div>
+
 <div class="modal" id="modal" onclick="backdrop(event)">
 <div class="modal-content">
 <span class="close" onclick="closeModal()">✕</span>
@@ -163,42 +182,48 @@ section{opacity:0;transform:translateY(80px);transition:all 1s cubic-bezier(.22,
 <button class="btn" onclick="closeModal()">Envoyer</button>
 </div>
 </div>
+
 <script>
 window.onload=()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),900)
 
-const fadeObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');if(e.target.querySelector('.counter'))animateCounter(e.target.querySelector('.counter'))}})},{threshold:.4})
+const fadeObserver=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('show');
+if(e.target.querySelector('.counter'))animateCounter(e.target.querySelector('.counter'))
+}
+})
+},{threshold:.4})
 document.querySelectorAll('.fade').forEach(el=>fadeObserver.observe(el))
 
-const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('story-visible')})},{threshold:.15})
+const sectionObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting)entry.target.classList.add('story-visible')
+})
+},{threshold:.15})
 document.querySelectorAll('section').forEach(sec=>sectionObserver.observe(sec))
 
 document.querySelector('.toggle').onclick=()=>document.body.classList.toggle('light')
 
-function animateCounter(el){let target=+el.dataset.target,duration=1400,startTime=null;function ease(t){return 1-Math.pow(1-t,3)}function update(time){if(!startTime)startTime=time;let p=Math.min((time-startTime)/duration,1);el.innerText=Math.floor(ease(p)*target);if(p<1)requestAnimationFrame(update);else el.innerText=target}requestAnimationFrame(update)}
+function animateCounter(el){
+let target=+el.dataset.target,duration=1400,startTime=null
+function ease(t){return 1-Math.pow(1-t,3)}
+function update(time){
+if(!startTime)startTime=time
+let p=Math.min((time-startTime)/duration,1)
+el.innerText=Math.floor(ease(p)*target)
+if(p<1)requestAnimationFrame(update)
+else el.innerText=target
+}
+requestAnimationFrame(update)
+}
+
 function sendForm(e){e.preventDefault();alert('Message envoyé !')}
 function openModal(){document.getElementById('modal').style.display='flex'}
 function closeModal(){document.getElementById('modal').style.display='none'}
 function backdrop(e){if(e.target.id==='modal')closeModal()}
 
-const chatBtn=document.getElementById('chat-toggle')
-const chatBox=document.getElementById('chatbox')
-const chatInput=document.getElementById('chat-input')
-const chatMessages=document.getElementById('chat-messages')
-chatBtn.onclick=()=>chatBox.classList.toggle('open')
-
-function addMsg(text,type){const msg=document.createElement('div');msg.className='msg '+type;msg.innerText=text;chatMessages.appendChild(msg);chatMessages.scrollTop=chatMessages.scrollHeight}
-
-async function aiReply(message){
-  try{
-    const res = await fetch('/.netlify/functions/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});
-    const data = await res.json();
-    return data.reply;
-  }catch(e){
-    return "Le chatbot nécessite une connexion serveur pour fonctionner correctement.";
-  }
-}
-
-chatInput.addEventListener('keydown',async e=>{if(e.key==='Enter'){const userText=chatInput.value.trim();if(!userText)return;addMsg(userText,'user');chatInput.value='';addMsg('...', 'bot');const reply=await aiReply(userText);chatMessages.lastChild.remove();addMsg(reply,'bot')}})
+// Chatbot retiré
 </script>
 </body>
 </html>
